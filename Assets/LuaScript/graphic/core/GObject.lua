@@ -239,29 +239,29 @@ function GObject:loadSprite(fileName, isAsync, callback)
 end
 
 ----------------资源加载----------------
-function GObject:loadAsset(fileName, isAsync, callback)
+function GObject:loadAsset(fileName, isAsync, callback, isSandbox)
     if isAsync then
         local function tempFunc(asset)
             if self._isExist == true then
                 callback(asset)
             else
                 --回来发现已经不存在父物体,再次释放
-                g_resource:unloadAsset(self._assetGroup, fileName)
+                g_resource:unloadAsset(self._assetGroup, fileName, isSandbox)
             end
         end
 
-        g_resource:loadAsset(fileName, self._assetGroup, isAsync, tempFunc)
+        g_resource:loadAsset(fileName, self._assetGroup, isAsync, tempFunc, isSandbox)
         return
     end
     
-    return g_resource:loadAsset(fileName, self._assetGroup)
+    return g_resource:loadAsset(fileName, self._assetGroup, false, nil, isSandbox)
 end
 
 --传nil时,卸载掉组内所有资源
-function GObject:unloadAsset(fileName)
+function GObject:unloadAsset(fileName, isSandbox)
     local groupName = getmetatable(self).__className
     if self._assetGroup == groupName then --被托管的资源不需要释放
-        return g_resource:unloadAsset(self._assetGroup, fileName)
+        return g_resource:unloadAsset(self._assetGroup, fileName, isSandbox)
     end
 end
 

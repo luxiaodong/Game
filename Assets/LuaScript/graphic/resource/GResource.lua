@@ -105,7 +105,7 @@ function GResource:unloadSceneAssetBundle(unitySceneName)
 end
 
 --加载资源,外部调用核心函数
-function GResource:loadAsset(assetName, groupName, isAsync, callback)
+function GResource:loadAsset(assetName, groupName, isAsync, callback, isSandbox)
 	if assetName == nil or assetName == "" 
 	or groupName == nil or groupName == "" then
 		print("[GResource:loadAsset] assetName or groupName is nil")
@@ -118,7 +118,7 @@ function GResource:loadAsset(assetName, groupName, isAsync, callback)
 	end
 
 	--将资源转成多国语言版本
-	assetName = self:localizedAssetName(assetName)
+	assetName = self:localizedAssetName(assetName, isSandbox)
 	
 	if not self._isAbMode then
 		local asset = self._csharpInstance:LoadAsset(assetName, nil)
@@ -359,12 +359,12 @@ function GResource:unloadAssetBundle(abName)
 end
 
 --卸载界面的资源,如果asset不指定,就全部卸载
-function GResource:unloadAsset(groupName, assetName)
+function GResource:unloadAsset(groupName, assetName, isSandbox)
 	if not self._aGroup[groupName] then return end
 
 	local assetNameList = {}
 	if assetName then
-		table.insert(assetNameList, self:localizedAssetName(assetName))
+		table.insert(assetNameList, self:localizedAssetName(assetName, isSandbox))
 	else
 		assetNameList = self._aGroup[groupName]
 	end
@@ -463,28 +463,28 @@ function GResource:dependAbNameList(abName, t)
 end
 
 --通过资源文件名查找对应语种的资源文件名
-function GResource:localizedAssetName(assetName)
-	if not self._isAbMode then
+function GResource:localizedAssetName(assetName, isSandbox)
+
+	if isSandbox and g_language:isDefault() then
+		assetName = "Sandbox/" + assetName
+	end
+
+	if self._isAbMode then
 		if not g_language:isDefault() then
-			-- local realName = string.gsub(assetName, "Assets/", "Assets/Localizations/"..string.upper(g_language:key()).."/")
-			local realName = string.gsub(assetName, "Assets/", string.format("Assets/Localizations/%s/", string.upper(g_language:key())))
-			if CS.Game.GFileUtils.GetInstance():IsFileExistInEditor(realName) then
-				return realName
+			if self._abRelation["language_"..g_language:key()][assetName] then --该资源标记为有多国语言版本
+				assetName = g_language:assetsPrefix() + assetName
 			end
 		end
-
-		return assetName
-	end
-
-	if not g_language:isDefault() then
-		if self._abRelation["language_"..g_language:key()][assetName] then
-			-- local realName = string.replace(assetName, "Assets/", "Assets/Localizations/"..string.upper(g_language:key()).."/")
-			local realName = string.replace(assetName, "Assets/", string.format("Assets/Localizations/%s/",string.upper(g_language:key())))
-			return realName
+	else
+		if not g_language:isDefault() then
+			local testFile = string.format("Assets/%s%s", g_language:assetsPrefix(), assetName);
+			if CS.Game.GFileUtils.GetInstance():IsFileExistInEditor(testFile) then --检测是否有多国语言版本
+				assetName = g_language:assetsPrefix() + assetName
+			end
 		end
 	end
 
-	return assetName
+	return "Assets/" + assetName
 end
 
 --通过资源文件名查找ab包名

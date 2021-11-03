@@ -5,6 +5,8 @@ function GLanguage:ctor()
     self._support = {"cn","en"}
     self._defaultKey = "cn"
     self._key = ""
+    self._assetsPrefix = ""
+    self._isDefault = false
     self:init()
 end
 
@@ -14,6 +16,12 @@ function GLanguage:init()
         self._key = key
     else
         self._key = self._defaultKey
+    end
+
+    if self._defaultKey == self._key then
+        self._isDefault = true
+    else
+        self._assetsPrefix = string.format("Localizations/%s/", string.upper(self._key))
     end
 
     self._language = require("graphic.resource.language."..self._key)
@@ -31,7 +39,11 @@ function GLanguage:key()
 end
 
 function GLanguage:isDefault()
-    return self._defaultKey == self._key
+    return self._isDefault
+end
+
+function GLanguage:assetsPrefix()
+    return self._assetsPrefix
 end
 
 function GLanguage:isSupport(key)
