@@ -1,0 +1,24 @@
+{
+    "yx":"xiaomi",
+    "channelId":"and_xiaomi",
+    "yxSource":"and_xiaomi",
+    "landscape": "true",
+    "versionName":"1.0.0.0",#
+    "versionCode":"1",#
+    "displayName":"葫芦小米",#
+    "icon":"icon_360.png",#
+    "logo":"360.png",#
+    "sdks": [
+        {
+            "folder":"xiaomi",#
+            "version": "3.2.2.12770",
+            "args":
+            {
+              "appId":"2882303761517441047",
+              "appKey":"5971744180047",
+              "appSecret":"KHKFCyUAvEeR3j/cIvEwgg==",#
+              "floatFramePos":"2"
+            }
+        }
+    ]
+}

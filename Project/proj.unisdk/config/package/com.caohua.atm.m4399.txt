@@ -1,0 +1,29 @@
+{
+    "yx":"4399",
+    "channelId":"and_4399",
+    "yxSource":"and_4399",
+    "landscape": "true",
+    "versionName":"1.0.0.0",#
+    "versionCode":"1",#
+    "displayName":"葫芦娃",#
+    "sdks": [
+        {
+            "folder":"4399",#
+            "version":"2.21.0.0",
+            "args":
+            {
+              "appKey":"111068",
+              "appSecret":"362762ee92c9c2b63250136a3849aee1",#
+              "floatFramePos":"2"
+            }
+        },
+        {
+            "folder":"bugly",#
+            "version":"3.2.3.0",
+            "args":
+            {
+                "appId":"1234131"
+            }
+        }
+    ]
+}

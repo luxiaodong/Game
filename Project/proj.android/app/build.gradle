@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.aoshitang.game.unity"
+        minSdkVersion 14
+        targetSdkVersion 30
+        versionName "1.0.0.0"
+        versionCode 1 //自增
+    }
+
+    signingConfigs {
+        release {
+            storeFile
+            storePassword
+            keyAlias
+            keyPassword
+        }
+    }
+
+    //调用配置文件
+    getSigningProperties()
+
+    buildTypes {
+        release{
+            minifyEnabled false
+            zipAlignEnabled true //Zipalign优化
+            //shrinkResources true // 移除无用的resource文件
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${defaultConfig.applicationId}.apk".toLowerCase()
+                }
+            }
+        }
+
+        debug{
+            minifyEnabled false //混淆
+            zipAlignEnabled false //Zipalign优化
+        }
+    }
+
+    sourceSets.main {
+        java.srcDir "src"
+        res.srcDir "res"
+        jniLibs.srcDir "libs"
+        manifest.srcFile "AndroidManifest.xml"
+        assets.srcDir "assets"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/unisdk.jar')
+    implementation files('libs/unity-classes.jar')
+    // implementation 'org.jetbrains:annotations-java5:15.0'
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMddhhmmss", TimeZone.getTimeZone("UTC"))
+}
+
+def getSigningProperties(){
+    def propFile = file('signing.properties')
+    if (propFile.canRead()){
+        def Properties props = new Properties()
+        props.load(new FileInputStream(propFile))
+        if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+            android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+            android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+            android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+            android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+        } else {
+            println 'signing.properties found but some entries are missing'
+            android.buildTypes.release.signingConfig = null
+        }
+    }else {
+        println 'signing.properties not found'
+        android.buildTypes.release.signingConfig = null
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "yx":"4399",
+    "channelId":"and_4399",
+    "yxSource":"and_4399",
+    "landscape": "true",
+    "debug": "true",
+    "package": [
+        {
+            "name": "com.plugin.m4399.Sdk",
+            "version": "2.21.0.0",
+            "args":
+            {
+              "appKey":"111068",
+              "floatFramePos":"2"
+            }
+        }
+    ]
+}
