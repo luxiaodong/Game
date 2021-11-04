@@ -12,7 +12,7 @@ function TestPoolLayer:init()
 end
 
 function TestPoolLayer:testCreate()
-    local prefabPath = "Assets/Prefabs/Particles/fire.prefab"
+    local prefabPath = "Sandbox/Prefabs/Particles/fire.prefab"
     if self._flag then
         self._flag = false
         g_objectPools:addPrefab(prefabPath, 5, true) --预设5个,有上线
@@ -38,7 +38,7 @@ end
 
 --有粒子系统必须在界面删掉前,回收
 function TestPoolLayer:exit()
-    local prefabPath = "Assets/Prefabs/Particles/fire.prefab"
+    local prefabPath = "Sandbox/Prefabs/Particles/fire.prefab"
     g_objectPools:removePrefab(prefabPath)
     TestLayer.exit(self)
 end

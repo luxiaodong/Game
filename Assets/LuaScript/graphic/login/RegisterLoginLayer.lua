@@ -14,7 +14,7 @@ end
 function RegisterLoginLayer:init()
     GLayer.init(self)
 
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/register.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/register.prefab")
 
     local btn = go.transform:Find("login").gameObject
     self:registerClick(btn)

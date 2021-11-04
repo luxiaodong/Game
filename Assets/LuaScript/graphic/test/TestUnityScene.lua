@@ -24,9 +24,9 @@ function TestUnityScene:testShader()
 	-- self:addObject(view)
 	-- view:init()
 
-	local view = require("graphic.test.TestRender.TestRenderView").create()
-    self:addObject(view)
-    view:init()
+	-- local view = require("graphic.test.TestRender.TestRenderView").create()
+ --    self:addObject(view)
+ --    view:init()
 end
 
 return TestUnityScene

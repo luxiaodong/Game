@@ -18,7 +18,7 @@ end
 function MessageBoxLayer:init()
     GPopupLayer.init(self, enum.ui.layer.messagebox)
 
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/messagebox.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/messagebox.prefab")
     self._msg = go.transform:Find("bg/msg")
 
     self._btnYes = go.transform:Find("bg/yes").gameObject

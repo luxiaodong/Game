@@ -9,7 +9,7 @@ function VersionUpdateLayer:init()
     GLayer.init(self)
 
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/versionUpdate.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/versionUpdate.prefab")
 
     local tempGo = go.transform:Find("des").gameObject
     self._ui.des = {}

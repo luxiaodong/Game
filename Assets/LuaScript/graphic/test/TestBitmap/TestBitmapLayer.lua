@@ -12,7 +12,7 @@ end
 
 function TestBitmapLayer:customLayout()
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/Test/testBitmap.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/Test/testBitmap.prefab")
     self._ui.root = {}
     self._ui.root.transform = go.transform
 
@@ -25,7 +25,7 @@ function TestBitmapLayer:customLayout()
     self._ui.bmFont = {}
     self._ui.bmFont.gameObject = tempGo
 
-    local txtGo = g_2dTools:createText("custom font: 0000", "Assets/Fonts/ttf/Hack_Regular.ttf", 30, self:assetGroup() )
+    local txtGo = g_2dTools:createText("custom font: 0000", "Sandbox/Fonts/ttf/Hack_Regular.ttf", 30, self:assetGroup() )
     txtGo.transform:SetParent(self._ui.root.transform, false)
 
     txtGo:GetComponent(typeof(RectTransform)).anchorMin = Vector2(0.5,0.5)

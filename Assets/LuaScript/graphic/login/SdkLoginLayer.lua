@@ -9,7 +9,7 @@ end
 
 function SdkLoginLayer:init()
     GLayer.init(self)
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/sdkLogin.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/sdkLogin.prefab")
     local image = go.transform:Find("enter")
     image:DOScale(Vector3(1.2,1.2,1.2), 1):SetEase(DoTween.Ease.OutBack):SetLoops(-1, DoTween.LoopType.Yoyo)
 end

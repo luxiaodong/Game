@@ -17,7 +17,7 @@ function GSystem:restartGame()
 
     -- 断开网络
     network.disconnectHttp()
-    network.disconnect()
+    g_tcpManager:clear()
 
     -- 停掉所有Update
     CS.Game.GLuaBehaviour.GetInstance():Stop()

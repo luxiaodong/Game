@@ -10,6 +10,9 @@ function SceneCamera:createGameObject()
 	local name = getmetatable(self).__className
     self._go = GameObject(name)
     self:resetCamera()
+
+	--过滤掉UI
+    self._camera.cullingMask = self._camera.cullingMask ~ (1 << enum.unity.layer.ui)
 end
 
 function SceneCamera:init()

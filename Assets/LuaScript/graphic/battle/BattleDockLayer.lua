@@ -12,9 +12,9 @@ function BattleDockLayer:init()
     -- self:bindTouchHandler()
     -- self:testSpine()
 
-    -- local imageGo, image = g_2dTools:createImage("Assets/Textures/test/alien.png")
+    -- local imageGo, image = g_2dTools:createImage("Textures/test/alien.png")
     -- imageGo.transform:SetParent(self._go.transform, false)
-    -- local shader = self:loadAsset("Assets/Shaders/hue.shader")
+    -- local shader = self:loadAsset("Shaders/hue.shader")
     -- image.material = Material(shader)
 
     -- for i=1,100 do
@@ -72,7 +72,7 @@ function BattleDockLayer:OnPointerClick(data)
 end
 
 function BattleDockLayer:testShader()
-    local shader = self:loadAsset("Assets/Shaders/mosaic2.shader")
+    local shader = self:loadAsset("Sandbox/Shaders/mosaic2.shader")
     local material = Material(shader)
     material:SetInt("_Width", Screen.width)
     material:SetInt("_Height", Screen.height)

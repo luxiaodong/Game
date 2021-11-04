@@ -40,7 +40,7 @@ function TestView:createGrunt()
     end
 
     local avatar = require("graphic.avatar.MovableAvatar").create()
-    avatar:init("Assets/Prefabs/Characters/Grunt/GruntURP.prefab")
+    avatar:init("Sandbox/Prefabs/Characters/Grunt/GruntURP.prefab",nil,nil,true)
     self:addObject(avatar)
     avatar:setEulerY(180)
     self._avatar = avatar
@@ -49,7 +49,7 @@ function TestView:createGrunt()
     local t = {
         ["ac"]  = {
             [enum.unity.controller.none] = {
-                ["path"] = "Assets/Animations/Characters/Grunt/Freedom.controller",
+                ["path"] = "Sandbox/Animations/Characters/Grunt/Freedom.controller",
                 ["act"] = {
                     [enum.unity.animation.idle] = {time=1,loop=true},
                     [enum.unity.animation.walk] = {time=1.333,loop=true},
@@ -113,33 +113,33 @@ function TestView:createMonkey()
 
     local avatar = require("graphic.avatar.Avatar").create()
     self:addObject(avatar)
-    avatar:init("Assets/Prefabs/Characters/Monkey/ch_pc_hou.prefab")
+    avatar:init("Sandbox/Prefabs/Characters/Monkey/ch_pc_hou.prefab")
     avatar:setEulerY(180)
     self._avatar = avatar
 
     local config = {
         [enum.unity.bodyparts.head] = {
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_004_tou.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_006_tou.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_008_tou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_004_tou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_006_tou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_008_tou.prefab",
         },
 
         [enum.unity.bodyparts.body] = {
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_004_shen.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_006_shen.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_008_shen.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_004_shen.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_006_shen.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_008_shen.prefab",
         },
 
         [enum.unity.bodyparts.hand] = {
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_004_shou.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_006_shou.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_008_shou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_004_shou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_006_shou.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_008_shou.prefab",
         },
 
         [enum.unity.bodyparts.foot] = {
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_004_jiao.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_006_jiao.prefab",
-            "Assets/Prefabs/Characters/Monkey/ch_pc_hou_008_jiao.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_004_jiao.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_006_jiao.prefab",
+            "Sandbox/Prefabs/Characters/Monkey/ch_pc_hou_008_jiao.prefab",
         }
     }
 
@@ -151,9 +151,9 @@ function TestView:createMonkey()
     avatar:initCombineMeshesRender(t, true, "Bone_root01")
 
     local t = {
-        "Assets/Models/Characters/Monkey/ch_we_one_hou_004.fbx",
-        "Assets/Models/Characters/Monkey/ch_we_one_hou_006.fbx",
-        "Assets/Models/Characters/Monkey/ch_we_one_hou_008.fbx"
+        "Sandbox/Prefabs/Characters/Monkey/ch_we_one_hou_004.prefab",
+        "Sandbox/Prefabs/Characters/Monkey/ch_we_one_hou_006.prefab",
+        "Sandbox/Prefabs/Characters/Monkey/ch_we_one_hou_008.prefab",
     }
 
     avatar:initWeapon("Bone_root01/Bone_root02/weapon_hand_r", t[math.random(3)])

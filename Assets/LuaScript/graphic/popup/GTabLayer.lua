@@ -7,7 +7,7 @@ end
 
 function GTabLayer:init(name, layerConfig)
 	GPopupLayer.init(self, name)
-	self._tabGo = self:loadUiPrefab("Assets/Prefabs/UI/tab.prefab")
+	self._tabGo = self:loadUiPrefab("Prefabs/UI/tab.prefab")
 	self._labelGo = self._tabGo.transform:Find("label").gameObject
 
 	self._stack = {} --负责已经弹出的界面, 存的是layerName

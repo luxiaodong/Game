@@ -11,7 +11,7 @@ function MainMenuLayer:init()
     GLayer.init(self)
 
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/mainMenu.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/Test/mainMenu.prefab")
     
     local tempGo = go.transform:Find("battle").gameObject
     self._ui.battle = {}

@@ -12,7 +12,7 @@ end
 
 function TestAudioLayer:playBGM()
     local temp = {}
-    temp.fileName = "Assets/Audios/battle3.mp3"
+    temp.fileName = "Sandbox/Audios/battle3.mp3"
     temp.group = enum.audio.group.background
     temp.isLoop = true
     event.broadcast(event.audio.play, temp)
@@ -20,7 +20,7 @@ end
 
 function TestAudioLayer:playEffect()
     local temp = {}
-    temp.fileName = "Assets/Audios/daKaiBaoXiang.mp3"
+    temp.fileName = "Sandbox/Audios/daKaiBaoXiang.mp3"
     temp.callback = function() print("effect over") end
     event.broadcast(event.audio.play, temp)
 end

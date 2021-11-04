@@ -18,7 +18,7 @@ function AudioLayer:init()
     }
     self:registerEvents(t)
 
-    local path = "Assets/Audios/AudioMixer.mixer"
+    local path = "Audios/AudioMixer.mixer"
     self._audioMixer = self:loadAsset(path)
 
     self._audioMixerGroup = {}

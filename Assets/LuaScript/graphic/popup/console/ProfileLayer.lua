@@ -9,7 +9,7 @@ function ProfileLayer:init()
     GLayer.init(self)
 
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/profile.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/profile.prefab")
 
     local tempGo = go.transform:Find("fps/average").gameObject
     self._ui.average = {}

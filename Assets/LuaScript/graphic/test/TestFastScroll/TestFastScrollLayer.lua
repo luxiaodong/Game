@@ -16,7 +16,7 @@ end
 function TestFastScrollLayer:init()
     TestLayer.init(self)
 
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/Test/testFastScroll.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/Test/testFastScroll.prefab")
     local t = self:getInfo()
 
     self:registerClick(go.transform:Find("Insert").gameObject)

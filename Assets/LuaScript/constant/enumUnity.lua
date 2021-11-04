@@ -21,7 +21,7 @@ enum.unity.scene = {}
 enum.unity.scene.ui = "SetupScene"
 enum.unity.scene.test = "WorldScene"
 enum.unity.scene.battle = "BattleScene"
-enum.unity.scene.world = "WorldScene"
+enum.unity.scene.world = "TestScene"
 
 enum.unity.bodyparts = {}
 enum.unity.bodyparts.head = "tou" --头

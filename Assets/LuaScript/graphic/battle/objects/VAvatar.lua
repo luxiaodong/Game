@@ -23,9 +23,9 @@ end
 function VAvatar:updateMaterial()
 	local matPath
 	if self._avatar._side == enum.battle.side.red then
-		matPath = "Assets/Materials/Entity/redColor.mat"
+		matPath = "Materials/Entity/redColor.mat"
 	elseif self._avatar._side == enum.battle.side.blue then
-		matPath = "Assets/Materials/Entity/blueColor.mat"
+		matPath = "Materials/Entity/blueColor.mat"
 	end
 
 	local go = self._go.transform:Find("entity").gameObject

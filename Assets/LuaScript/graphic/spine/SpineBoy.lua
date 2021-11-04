@@ -10,8 +10,8 @@ function SpineBoy:init(pic)
     Spine.init(self)
 
     if pic == nil then
-    	-- pic = "Assets/Sandbox/Dragon/Dragon.prefab"
-        pic = "Assets/Sandbox/Hero/hero.prefab"
+    	-- pic = "Sandbox/Dragon/Dragon.prefab"
+        pic = "Sandbox/Hero/hero.prefab"
     end
 
     self:loadAsset(pic, true, function(prefab)
@@ -25,7 +25,7 @@ function SpineBoy:init(pic)
         g_tools:delayCall(0.2, function() self:pause() end)
         g_tools:delayCall(8.2, function() self:resume() end, true)
 
-    end)
+    end, true)
 end
 
 return SpineBoy

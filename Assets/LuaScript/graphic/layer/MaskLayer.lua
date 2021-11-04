@@ -65,7 +65,7 @@ function MaskLayer:showMask(data)
         self._image.enabled = true
     end
 
-    local shader = self:loadAsset("Assets/Shaders/Test/mask.shader")
+    local shader = self:loadAsset("Sandbox/Shaders/Test/mask.shader")
     local material = Material(shader)
     material:SetVectorArray("_Points", self._lines)
     material:SetInt("_Point_Count", #points)

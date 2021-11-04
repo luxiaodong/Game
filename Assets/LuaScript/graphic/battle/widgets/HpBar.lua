@@ -18,7 +18,7 @@ function HpBar:init()
 end
 
 function HpBar:setPercent()
-    local shader = self:loadAsset("Assets/Shaders/Test/redHp.shader")
+    local shader = self:loadAsset("Sandbox/Shaders/Test/redHp.shader")
     local render = self._go:GetComponent(typeof(MeshRenderer))
     render.material = Material(shader)
 end

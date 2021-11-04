@@ -7,7 +7,9 @@ end
 
 function TestLocailzationLayer:init()
     TestLayer.init(self)
-    self:customLayout() 
+    self:customLayout()
+
+    print("current language is ", g_language:key())
 end
 
 function TestLocailzationLayer:changeLanguage()
@@ -22,7 +24,7 @@ end
 function TestLocailzationLayer:customLayout()
     self:createButtonWithText(self._go.transform, "Change", Vector2(0,100), Vector2(122,62), handler(self, self.changeLanguage))
 
-    local imageGo,image = self:createImage(self._go.transform, "Assets/Textures/UI/Test/alien.png", Vector2(-150,0), Vector2(100,100), false)
+    local imageGo,image = self:createImage(self._go.transform, "Sandbox/Textures/UI/alien.png", Vector2(-150,0), Vector2(100,100), false)
     image:SetNativeSize()
 
     local str = g_language:get("exp").."\n"..g_language:formatNumber(1234567)

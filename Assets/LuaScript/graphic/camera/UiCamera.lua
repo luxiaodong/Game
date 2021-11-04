@@ -10,6 +10,7 @@ function UiCamera:createGameObject()
     self._camera = self._go:GetComponent(typeof(Camera))
     --stage的z值为0,near设置0会导致ScreenPointToLocalPointInRectangle判断失败返回 
     self._camera.nearClipPlane = -1
+    self._camera.cullingMask = (1 << enum.unity.layer.ui) --只保留UI
     self._type = enum.camera.ui
 end
 

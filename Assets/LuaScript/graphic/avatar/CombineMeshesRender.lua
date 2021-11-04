@@ -69,7 +69,7 @@ function CombineMeshesRender:changeAllTogether(list)
         --2维列表
         -- oldUvList = CS.System.Collections.Generic.List(CS.System.Collections.Generic.List(Vector2))()
         oldUvList = {}
-        newMaterial = Material( Shader.Find("Mobile/Diffuse") ) --这个Shader无法动更
+        newMaterial = Material( Shader.Find("Universal Render Pipeline/Simple Lit") ) --这个Shader无法动更
         local textureList = CS.System.Collections.Generic.List(Texture2D)()
         for i=1, materialList.Count do
             textureList:Add(materialList[i-1]:GetTexture("_MainTex"))

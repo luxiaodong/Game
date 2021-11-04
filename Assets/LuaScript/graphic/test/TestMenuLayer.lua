@@ -29,7 +29,7 @@ end
 
 function TestMenuLayer:init()
     GLayer.init(self)
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/Test/testMenu.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/Test/testMenu.prefab")
     
     local contentGo = go.transform:Find("ScrollView/Viewport/Content").gameObject
     contentGo:GetComponent(typeof(RectTransform)).sizeDelta = Vector2(0, #config*self.m_height)

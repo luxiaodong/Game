@@ -13,7 +13,7 @@ function TransitionLayer:init()
     self:registerEvent(event.ui.transition)
 
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/transition.prefab")
+    local go = self:loadUiPrefab("Prefabs/UI/transition.prefab")
 
 	local tempGo = go.transform:Find("image").gameObject
     self._ui.image = {}
@@ -70,7 +70,7 @@ end
 -- https://github.com/mob-sakai/UIEffect
 function TransitionLayer:play(name)
 	if name == enum.ui.transition.circle then
-		local shader = self:loadAsset("Assets/Shaders/Test/TransitionCircle.shader")
+		local shader = self:loadAsset("Sandbox/Shaders/Test/TransitionCircle.shader")
 		self._ui.image.image.material = Material(shader)
 		self._speed = 2
 		self._passTime = 0

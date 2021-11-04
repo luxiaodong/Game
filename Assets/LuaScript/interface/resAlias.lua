@@ -12,4 +12,4 @@ resAlias.color.quality.white = Color(0xdb/0xff, 0xdb/0xff, 0xdb/0xff)
 
 resAlias.font = {}
 resAlias.font.arial = "Arial.ttf"
-resAlias.font.hack_regular = "Assets/Fonts/ttf/Hack_Regular.ttf"
+resAlias.font.hack_regular = "Sandbox/Fonts/ttf/Hack_Regular.ttf"

@@ -41,8 +41,8 @@ end
 
 function TestScene:customLayout()
 	-- 非标准写法
-	-- local closeBtn = g_2dTools:createButton("Assets/Textures/UI/Pay/close.png", self:assetGroup())
-    local closeBtn = g_2dTools:createButton("Assets/Textures/UI/Test/close.png", self:assetGroup())
+	-- local closeBtn = g_2dTools:createButton("Sandbox/Textures/UI/Pay/close.png", self:assetGroup())
+    local closeBtn = g_2dTools:createButton("Sandbox/Textures/UI/close.png", self:assetGroup())
     closeBtn.transform:SetParent(self._go.transform, false)
     closeBtn:GetComponent(typeof(RectTransform)).anchorMin = Vector2(1,1)
     closeBtn:GetComponent(typeof(RectTransform)).anchorMax = Vector2(1,1)

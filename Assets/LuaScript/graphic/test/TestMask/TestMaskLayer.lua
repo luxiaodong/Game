@@ -23,7 +23,7 @@ function TestMaskLayer:guideMask()
     points[2] = Vector2(r.x + r.width, r.y + r.height/2)
     points[3] = Vector2(r.x + r.width/2, r.y + r.height)
     points[4] = Vector2(r.x, r.y + r.height/2)
-    event.broadcast(event.ui.showMask, {points=points,callback=function() print("y") end})
+    event.broadcast(event.ui.showMask, {points=points})
 end
 
 function TestMaskLayer:customLayout()

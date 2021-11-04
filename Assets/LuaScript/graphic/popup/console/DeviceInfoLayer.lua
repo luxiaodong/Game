@@ -8,7 +8,7 @@ end
 function DeviceInfoLayer:init()
     GLayer.init(self)
 
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/deviceInfo.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/deviceInfo.prefab")
     local btn = go.transform:Find("close").gameObject
     self:registerClick(btn)
 

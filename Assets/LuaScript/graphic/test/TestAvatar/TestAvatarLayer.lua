@@ -116,7 +116,7 @@ end
 --         end, true)
 --     end)
 
---     -- local fileName = "Assets/Particle/fire.prefab"
+--     -- local fileName = "Sandbox/Particle/fire.prefab"
 --     -- local go = self:loadAsset(fileName)
 --     -- local ps = go:GetComponent(typeof(ParticleSystem))
 --     -- ps:Play()

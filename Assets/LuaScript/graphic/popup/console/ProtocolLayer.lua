@@ -7,7 +7,7 @@ end
 
 function ProtocolLayer:init()
     GLayer.init(self)
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/gm.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/gm.prefab")
     local t = self:getInfo()
 
     local btn = go.transform:Find("send").gameObject

@@ -11,7 +11,7 @@ function JoystickLayer:init()
     self:bindTouchHandler()
 
     self._ui = {}
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/joystick.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/joystick.prefab")
 
     local tempGo = go.transform:Find("attack").gameObject
     self._ui.attack = {}

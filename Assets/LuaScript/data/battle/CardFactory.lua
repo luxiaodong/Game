@@ -41,7 +41,7 @@ function CardFactory:createKingTower(level)
 	avatar._maxHp = 6400
 	avatar._attackCycle = g_battle:convertSecondToFrame(1)
 	avatar._hitFrame = avatar._attackCycle - 1
-	avatar._prefab = "Assets/Prefabs/Building/kingTower.prefab"
+	avatar._prefab = "Prefabs/Building/kingTower.prefab"
 	avatar._polygon = require("data.battle.Polygon").create()
 	avatar._polygon:initRoundBox(Vector2(4,4), 4)
 	return avatar
@@ -60,7 +60,7 @@ function CardFactory:createMinorTower(level)
 	avatar._maxHp = 3600
 	avatar._attackCycle = g_battle:convertSecondToFrame(1)
 	avatar._hitFrame = avatar._attackCycle - 1
-	avatar._prefab = "Assets/Prefabs/Building/minorTower.prefab"
+	avatar._prefab = "Prefabs/Building/minorTower.prefab"
 	avatar._polygon = require("data.battle.Polygon").create()
 	avatar._polygon:initBox(Vector2(3,3))
 	return avatar
@@ -82,7 +82,7 @@ function CardFactory:createSkeleton(level)
 	avatar._mass = 1
 	avatar._visualRange = 6
 	avatar._moveSpeed = 1.5/g_battle:convertSecondToFrame(1) --1 m/s
-	avatar._prefab = "Assets/Prefabs/Troop/skeleton.prefab"
+	avatar._prefab = "Prefabs/Troop/skeleton.prefab"
 	avatar._polygon = require("data.battle.Polygon").create()
 	avatar._polygon:initCircle(0.25)
 	return avatar
@@ -101,7 +101,7 @@ function CardFactory:createCannon(level)
 	avatar._maxHp = 1800
 	avatar._attackCycle = g_battle:convertSecondToFrame(1)
 	avatar._hitFrame = avatar._attackCycle - 1
-	avatar._prefab = "Assets/Prefabs/Building/cannon.prefab"
+	avatar._prefab = "Prefabs/Building/cannon.prefab"
 	avatar._polygon = require("data.battle.Polygon").create()
 	avatar._polygon:initCircle(0.75)
 	return avatar

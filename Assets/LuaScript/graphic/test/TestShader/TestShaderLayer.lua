@@ -33,25 +33,25 @@ end
 
 function TestShaderLayer:customLayout()
     --用代码的方式效率较低,材质是实例,无法合批
-    local imageGo,image = g_2dTools:createImage("Assets/Textures/UI/Test/alien.png", self:assetGroup() )
+    local imageGo,image = g_2dTools:createImage("Sandbox/Textures/UI/alien.png", self:assetGroup() )
     imageGo.transform:SetParent(self._go.transform, false)
     imageGo:GetComponent(typeof(RectTransform)).anchorMin = Vector2(0.5,0.5)
     imageGo:GetComponent(typeof(RectTransform)).anchorMax = Vector2(0.5,0.5)
     imageGo:GetComponent(typeof(RectTransform)).anchoredPosition = Vector2(-150,0)
 
-    local shader = self:loadAsset("Assets/Shaders/Test/hue.shader")
+    local shader = self:loadAsset("Sandbox/Shaders/Test/hue.shader")
     image.material = Material(shader)
     image.material:SetMatrix("_hueMatrix", self:constructionMatrix(0))
     self._image = image
 
     --第二个
-    local imageGo,image = g_2dTools:createImage("Assets/Textures/UI/Test/alien.png", self:assetGroup() )
+    local imageGo,image = g_2dTools:createImage("Sandbox/Textures/UI/alien.png", self:assetGroup() )
     imageGo.transform:SetParent(self._go.transform, false)
     imageGo:GetComponent(typeof(RectTransform)).anchorMin = Vector2(0.5,0.5)
     imageGo:GetComponent(typeof(RectTransform)).anchorMax = Vector2(0.5,0.5)
     imageGo:GetComponent(typeof(RectTransform)).anchoredPosition = Vector2(150,0)
 
-    image.material = self:loadAsset("Assets/Materials/Test/eyeFish.mat")
+    image.material = self:loadAsset("Sandbox/Materials/Test/eyeFish.mat")
     image.mainTexture.wrapMode = TextureWrapMode.Repeat
 end
 

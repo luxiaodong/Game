@@ -9,7 +9,7 @@ end
 function TaskBriefLayer:init()
     GLayer.init(self)
 
-    local go = self:loadUiPrefab("Assets/Prefabs/UI/taskBrief.prefab")
+    local go = self:loadUiPrefab("Sandbox/Prefabs/UI/taskBrief.prefab")
     --self:registerEvent(event.ui.pushText)
 end
 
