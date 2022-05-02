@@ -360,47 +360,9 @@ namespace XLua.CSObjectWrap
 		    Utils.BeginObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, 0, 0, 0, 0);
 			Utils.EndObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, null, null, null, null, null);
 			
-			Utils.BeginClassRegister(typeof(UnityEngine.RuntimePlatform), L, null, 38, 0, 0);
+			Utils.BeginClassRegister(typeof(UnityEngine.RuntimePlatform), L, null, 42, 0, 0);
 
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OSXEditor", UnityEngine.RuntimePlatform.OSXEditor);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OSXPlayer", UnityEngine.RuntimePlatform.OSXPlayer);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WindowsPlayer", UnityEngine.RuntimePlatform.WindowsPlayer);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WindowsEditor", UnityEngine.RuntimePlatform.WindowsEditor);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "IPhonePlayer", UnityEngine.RuntimePlatform.IPhonePlayer);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Android", UnityEngine.RuntimePlatform.Android);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LinuxPlayer", UnityEngine.RuntimePlatform.LinuxPlayer);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LinuxEditor", UnityEngine.RuntimePlatform.LinuxEditor);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WebGLPlayer", UnityEngine.RuntimePlatform.WebGLPlayer);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerX86", UnityEngine.RuntimePlatform.WSAPlayerX86);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerX64", UnityEngine.RuntimePlatform.WSAPlayerX64);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerARM", UnityEngine.RuntimePlatform.WSAPlayerARM);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PS4", UnityEngine.RuntimePlatform.PS4);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "XboxOne", UnityEngine.RuntimePlatform.XboxOne);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "tvOS", UnityEngine.RuntimePlatform.tvOS);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Switch", UnityEngine.RuntimePlatform.Switch);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Lumin", UnityEngine.RuntimePlatform.Lumin);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Stadia", UnityEngine.RuntimePlatform.Stadia);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CloudRendering", UnityEngine.RuntimePlatform.CloudRendering);
-            
+            Utils.RegisterEnumType(L, typeof(UnityEngine.RuntimePlatform));
 
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
             
@@ -420,86 +382,14 @@ namespace XLua.CSObjectWrap
             else if(lua_type == LuaTypes.LUA_TSTRING)
             {
 
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "OSXEditor"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.OSXEditor);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OSXPlayer"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.OSXPlayer);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WindowsPlayer"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WindowsPlayer);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WindowsEditor"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WindowsEditor);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "IPhonePlayer"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.IPhonePlayer);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Android"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Android);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "LinuxPlayer"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.LinuxPlayer);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "LinuxEditor"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.LinuxEditor);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WebGLPlayer"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WebGLPlayer);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerX86"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerX86);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerX64"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerX64);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerARM"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerARM);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "PS4"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.PS4);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "XboxOne"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.XboxOne);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "tvOS"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.tvOS);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Switch"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Switch);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Lumin"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Lumin);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Stadia"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Stadia);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "CloudRendering"))
-                {
-                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.CloudRendering);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.RuntimePlatform!");
-                }
+                try
+				{
+                    translator.TranslateToEnumToTop(L, typeof(UnityEngine.RuntimePlatform), 1);
+				}
+				catch (System.Exception e)
+				{
+					return LuaAPI.luaL_error(L, "cast to " + typeof(UnityEngine.RuntimePlatform) + " exception:" + e);
+				}
 
             }
 			

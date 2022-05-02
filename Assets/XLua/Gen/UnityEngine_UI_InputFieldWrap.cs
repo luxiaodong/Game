@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.UI.InputField);
-			Utils.BeginObjectRegister(type, L, translator, 0, 21, 34, 23);
+			Utils.BeginObjectRegister(type, L, translator, 0, 21, 35, 24);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTextWithoutNotify", _m_SetTextWithoutNotify);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "MoveTextEnd", _m_MoveTextEnd);
@@ -47,6 +47,7 @@ namespace XLua.CSObjectWrap
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "shouldHideMobileInput", _g_get_shouldHideMobileInput);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shouldActivateOnSelect", _g_get_shouldActivateOnSelect);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "text", _g_get_text);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isFocused", _g_get_isFocused);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "caretBlinkRate", _g_get_caretBlinkRate);
@@ -82,6 +83,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "layoutPriority", _g_get_layoutPriority);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "shouldHideMobileInput", _s_set_shouldHideMobileInput);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shouldActivateOnSelect", _s_set_shouldActivateOnSelect);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "text", _s_set_text);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "caretBlinkRate", _s_set_caretBlinkRate);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "caretWidth", _s_set_caretWidth);
@@ -731,6 +733,20 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_shouldActivateOnSelect(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.UI.InputField gen_to_be_invoked = (UnityEngine.UI.InputField)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.shouldActivateOnSelect);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_text(RealStatePtr L)
         {
 		    try {
@@ -1202,6 +1218,21 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.UI.InputField gen_to_be_invoked = (UnityEngine.UI.InputField)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.shouldHideMobileInput = LuaAPI.lua_toboolean(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_shouldActivateOnSelect(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.UI.InputField gen_to_be_invoked = (UnityEngine.UI.InputField)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.shouldActivateOnSelect = LuaAPI.lua_toboolean(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 9, 74, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 10, 75, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "SupportsRenderTextureFormat", _m_SupportsRenderTextureFormat_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "SupportsBlendingOnRenderTextureFormat", _m_SupportsBlendingOnRenderTextureFormat_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "SupportsTextureFormat", _m_SupportsTextureFormat_xlua_st_);
@@ -39,6 +39,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "IsFormatSupported", _m_IsFormatSupported_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetCompatibleFormat", _m_GetCompatibleFormat_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetGraphicsFormat", _m_GetGraphicsFormat_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetRenderTextureSupportedMSAASampleCount", _m_GetRenderTextureSupportedMSAASampleCount_xlua_st_);
             
 			
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "unsupportedIdentifier", UnityEngine.SystemInfo.unsupportedIdentifier);
@@ -117,6 +118,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "hasMipMaxLevel", _g_get_hasMipMaxLevel);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "supportsMipStreaming", _g_get_supportsMipStreaming);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "usesLoadStoreActions", _g_get_usesLoadStoreActions);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "supportsStoreAndResolveAction", _g_get_supportsStoreAndResolveAction);
             
 			
 			
@@ -333,6 +335,33 @@ namespace XLua.CSObjectWrap
                     
                         UnityEngine.Experimental.Rendering.GraphicsFormat gen_ret = UnityEngine.SystemInfo.GetGraphicsFormat( _format );
                         translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetRenderTextureSupportedMSAASampleCount_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    UnityEngine.RenderTextureDescriptor _desc;translator.Get(L, 1, out _desc);
+                    
+                        int gen_ret = UnityEngine.SystemInfo.GetRenderTextureSupportedMSAASampleCount( _desc );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
                     
@@ -1230,6 +1259,18 @@ namespace XLua.CSObjectWrap
 		    try {
             
 			    LuaAPI.lua_pushboolean(L, UnityEngine.SystemInfo.usesLoadStoreActions);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_supportsStoreAndResolveAction(RealStatePtr L)
+        {
+		    try {
+            
+			    LuaAPI.lua_pushboolean(L, UnityEngine.SystemInfo.supportsStoreAndResolveAction);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

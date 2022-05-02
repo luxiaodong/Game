@@ -1,6 +1,7 @@
 local GLayer = require("graphic.core.GLayer")
 local TouchLayer = class("TouchLayer",GLayer)
 
+--记录玩家操作,用于回放
 function TouchLayer:ctor()
 	GLayer.ctor(self)
 end

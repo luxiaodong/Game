@@ -7,6 +7,7 @@ end
 
 --全屏幕界面时候,关闭unity 3d场景相机
 --盖在下面的ui也可以不显示
+--是可以使用viewPort,或者遮挡剔除
 function GScreenLayer:init(name)
 	GPopupLayer.init(self, name)
 	g_system:setUnitySceneCameraVisible(false)
