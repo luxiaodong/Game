@@ -9,6 +9,30 @@
 
 -- xpcall(start, function(...) print(...) error("X") end )
 
+function isCrashedAtLaunch()
+-- function checkLaunchCrash()
+	local currentTime = os.time()
+	local PlayerPrefs = CS.UnityEngine.PlayerPrefs
+
+	-- 上次启动的时间
+    local lastTime = PlayerPrefs.GetInt("game_launch_last_time", 0) 
+    if lastTime == 0 || lastTime + 60 < currentTime then
+    	PlayerPrefs.SetInt("game_launch_last_time", currentTime)
+    	PlayerPrefs.SetInt("game_launch_count", 0)
+    	return false;
+    end
+
+    -- 启动次数
+    local launchCount = PlayerPrefs.GetInt("game_launch_count", 0) 
+    if launchCount < 3 then
+    	PlayerPrefs.SetInt("game_launch_count", launchCount+1) --表示1分钟内的第几次启动
+    	return false;
+    end
+
+    -- 1分种内进第四次才返回
+    return true;
+end
+
 function checkPackageVersion()
 	local function removeDir(path)
 	    if path and CS.Game.GFileUtils.GetInstance():IsDirExist(path) then

@@ -64,6 +64,7 @@ end
 
 function GUnityScene:progress()
     --分两块,加载Ab包,和加载scene,假设7/3开
+    --或者改成加载资源和解压资源两块提示
     if self._asyncOperation then
         return 0.7 + 0.3*self._asyncOperation.progress
     end
