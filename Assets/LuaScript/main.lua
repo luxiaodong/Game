@@ -16,7 +16,7 @@ function isCrashedAtLaunch()
 
 	-- 上次启动的时间
     local lastTime = PlayerPrefs.GetInt("game_launch_last_time", 0) 
-    if lastTime == 0 || lastTime + 60 < currentTime then
+    if lastTime == 0 or lastTime + 60 < currentTime then
     	PlayerPrefs.SetInt("game_launch_last_time", currentTime)
     	PlayerPrefs.SetInt("game_launch_count", 0)
     	return false;

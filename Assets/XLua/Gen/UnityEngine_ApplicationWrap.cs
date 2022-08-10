@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 22, 30, 3);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 23, 30, 3);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Quit", _m_Quit_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Unload", _m_Unload_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "CanStreamedLevelBeLoaded", _m_CanStreamedLevelBeLoaded_xlua_st_);
@@ -54,6 +54,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "deepLinkActivated", _e_deepLinkActivated);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "wantsToQuit", _e_wantsToQuit);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "quitting", _e_quitting);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "unloading", _e_unloading);
 			
             
 			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "isPlaying", _g_get_isPlaying);
@@ -1126,6 +1127,35 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
 			return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Application.quitting!");
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _e_unloading(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+                System.Action gen_delegate = translator.GetDelegate<System.Action>(L, 2);
+                if (gen_delegate == null) {
+                    return LuaAPI.luaL_error(L, "#2 need System.Action!");
+                }
+                
+				
+				if (gen_param_count == 2 && LuaAPI.xlua_is_eq_str(L, 1, "+")) {
+					UnityEngine.Application.unloading += gen_delegate;
+					return 0;
+				} 
+				
+				
+				if (gen_param_count == 2 && LuaAPI.xlua_is_eq_str(L, 1, "-")) {
+					UnityEngine.Application.unloading -= gen_delegate;
+					return 0;
+				} 
+				
+			} catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+			return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Application.unloading!");
         }
         
     }

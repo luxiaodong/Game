@@ -31,12 +31,14 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 6, 36, 33);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "IncreaseLevel", _m_IncreaseLevel_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "DecreaseLevel", _m_DecreaseLevel_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "SetQualityLevel", _m_SetQualityLevel_xlua_st_);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 8, 36, 33);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "SetLODSettings", _m_SetLODSettings_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetRenderPipelineAssetAt", _m_GetRenderPipelineAssetAt_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetQualityLevel", _m_GetQualityLevel_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetQualitySettings", _m_GetQualitySettings_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "SetQualityLevel", _m_SetQualityLevel_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "IncreaseLevel", _m_IncreaseLevel_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "DecreaseLevel", _m_DecreaseLevel_xlua_st_);
             
 			
             
@@ -129,6 +131,163 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetLODSettings_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 3&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3)) 
+                {
+                    float _lodBias = (float)LuaAPI.lua_tonumber(L, 1);
+                    int _maximumLODLevel = LuaAPI.xlua_tointeger(L, 2);
+                    bool _setDirty = LuaAPI.lua_toboolean(L, 3);
+                    
+                    UnityEngine.QualitySettings.SetLODSettings( _lodBias, _maximumLODLevel, _setDirty );
+                    
+                    
+                    
+                    return 0;
+                }
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                {
+                    float _lodBias = (float)LuaAPI.lua_tonumber(L, 1);
+                    int _maximumLODLevel = LuaAPI.xlua_tointeger(L, 2);
+                    
+                    UnityEngine.QualitySettings.SetLODSettings( _lodBias, _maximumLODLevel );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.QualitySettings.SetLODSettings!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetRenderPipelineAssetAt_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    int _index = LuaAPI.xlua_tointeger(L, 1);
+                    
+                        UnityEngine.Rendering.RenderPipelineAsset gen_ret = UnityEngine.QualitySettings.GetRenderPipelineAssetAt( _index );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetQualityLevel_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    
+                        int gen_ret = UnityEngine.QualitySettings.GetQualityLevel(  );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetQualitySettings_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    
+                        UnityEngine.Object gen_ret = UnityEngine.QualitySettings.GetQualitySettings(  );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetQualityLevel_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)) 
+                {
+                    int _index = LuaAPI.xlua_tointeger(L, 1);
+                    
+                    UnityEngine.QualitySettings.SetQualityLevel( _index );
+                    
+                    
+                    
+                    return 0;
+                }
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2)) 
+                {
+                    int _index = LuaAPI.xlua_tointeger(L, 1);
+                    bool _applyExpensiveChanges = LuaAPI.lua_toboolean(L, 2);
+                    
+                    UnityEngine.QualitySettings.SetQualityLevel( _index, _applyExpensiveChanges );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.QualitySettings.SetQualityLevel!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_IncreaseLevel_xlua_st_(RealStatePtr L)
         {
 		    try {
@@ -199,96 +358,6 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.QualitySettings.DecreaseLevel!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_SetQualityLevel_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)) 
-                {
-                    int _index = LuaAPI.xlua_tointeger(L, 1);
-                    
-                    UnityEngine.QualitySettings.SetQualityLevel( _index );
-                    
-                    
-                    
-                    return 0;
-                }
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2)) 
-                {
-                    int _index = LuaAPI.xlua_tointeger(L, 1);
-                    bool _applyExpensiveChanges = LuaAPI.lua_toboolean(L, 2);
-                    
-                    UnityEngine.QualitySettings.SetQualityLevel( _index, _applyExpensiveChanges );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.QualitySettings.SetQualityLevel!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetRenderPipelineAssetAt_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    int _index = LuaAPI.xlua_tointeger(L, 1);
-                    
-                        UnityEngine.Rendering.RenderPipelineAsset gen_ret = UnityEngine.QualitySettings.GetRenderPipelineAssetAt( _index );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetQualityLevel_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    
-                        int gen_ret = UnityEngine.QualitySettings.GetQualityLevel(  );
-                        LuaAPI.xlua_pushinteger(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
             
         }
         

@@ -21,30 +21,31 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.Texture2D);
-			Utils.BeginObjectRegister(type, L, translator, 0, 18, 10, 2);
+			Utils.BeginObjectRegister(type, L, translator, 0, 18, 11, 2);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Compress", _m_Compress);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ClearRequestedMipmapLevel", _m_ClearRequestedMipmapLevel);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsRequestedMipmapLevelLoaded", _m_IsRequestedMipmapLevelLoaded);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ClearMinimumMipmapLevel", _m_ClearMinimumMipmapLevel);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UpdateExternalTexture", _m_UpdateExternalTexture);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetRawTextureData", _m_GetRawTextureData);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixels", _m_GetPixels);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixels32", _m_GetPixels32);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PackTextures", _m_PackTextures);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPixel", _m_SetPixel);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPixels", _m_SetPixels);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixel", _m_GetPixel);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixelBilinear", _m_GetPixelBilinear);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadRawTextureData", _m_LoadRawTextureData);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Apply", _m_Apply);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Resize", _m_Resize);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Reinitialize", _m_Reinitialize);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ReadPixels", _m_ReadPixels);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPixels32", _m_SetPixels32);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixels", _m_GetPixels);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Compress", _m_Compress);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ClearRequestedMipmapLevel", _m_ClearRequestedMipmapLevel);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsRequestedMipmapLevelLoaded", _m_IsRequestedMipmapLevelLoaded);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ClearMinimumMipmapLevel", _m_ClearMinimumMipmapLevel);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UpdateExternalTexture", _m_UpdateExternalTexture);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetRawTextureData", _m_GetRawTextureData);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPixels32", _m_GetPixels32);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PackTextures", _m_PackTextures);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "format", _g_get_format);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isReadable", _g_get_isReadable);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "vtOnly", _g_get_vtOnly);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "streamingMipmaps", _g_get_streamingMipmaps);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "streamingMipmapsPriority", _g_get_streamingMipmapsPriority);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "requestedMipmapLevel", _g_get_requestedMipmapLevel);
@@ -185,348 +186,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Compress(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    bool _highQuality = LuaAPI.lua_toboolean(L, 2);
-                    
-                    gen_to_be_invoked.Compress( _highQuality );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_ClearRequestedMipmapLevel(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                    gen_to_be_invoked.ClearRequestedMipmapLevel(  );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_IsRequestedMipmapLevelLoaded(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                        bool gen_ret = gen_to_be_invoked.IsRequestedMipmapLevelLoaded(  );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_ClearMinimumMipmapLevel(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                    gen_to_be_invoked.ClearMinimumMipmapLevel(  );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_UpdateExternalTexture(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    System.IntPtr _nativeTex = LuaAPI.lua_touserdata(L, 2);
-                    
-                    gen_to_be_invoked.UpdateExternalTexture( _nativeTex );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetRawTextureData(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                        byte[] gen_ret = gen_to_be_invoked.GetRawTextureData(  );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetPixels(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1) 
-                {
-                    
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels(  );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
-                {
-                    int _miplevel = LuaAPI.xlua_tointeger(L, 2);
-                    
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _miplevel );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 5&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 5)) 
-                {
-                    int _x = LuaAPI.xlua_tointeger(L, 2);
-                    int _y = LuaAPI.xlua_tointeger(L, 3);
-                    int _blockWidth = LuaAPI.xlua_tointeger(L, 4);
-                    int _blockHeight = LuaAPI.xlua_tointeger(L, 5);
-                    
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 6&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 5)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 6)) 
-                {
-                    int _x = LuaAPI.xlua_tointeger(L, 2);
-                    int _y = LuaAPI.xlua_tointeger(L, 3);
-                    int _blockWidth = LuaAPI.xlua_tointeger(L, 4);
-                    int _blockHeight = LuaAPI.xlua_tointeger(L, 5);
-                    int _miplevel = LuaAPI.xlua_tointeger(L, 6);
-                    
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight, _miplevel );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.GetPixels!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetPixels32(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1) 
-                {
-                    
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32(  );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
-                {
-                    int _miplevel = LuaAPI.xlua_tointeger(L, 2);
-                    
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _miplevel );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.GetPixels32!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_PackTextures(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 3&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)) 
-                {
-                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
-                    int _padding = LuaAPI.xlua_tointeger(L, 3);
-                    
-                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 4&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)) 
-                {
-                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
-                    int _padding = LuaAPI.xlua_tointeger(L, 3);
-                    int _maximumAtlasSize = LuaAPI.xlua_tointeger(L, 4);
-                    
-                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding, _maximumAtlasSize );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 5&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 5)) 
-                {
-                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
-                    int _padding = LuaAPI.xlua_tointeger(L, 3);
-                    int _maximumAtlasSize = LuaAPI.xlua_tointeger(L, 4);
-                    bool _makeNoLongerReadable = LuaAPI.lua_toboolean(L, 5);
-                    
-                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding, _maximumAtlasSize, _makeNoLongerReadable );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.PackTextures!");
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_CreateExternalTexture_xlua_st_(RealStatePtr L)
@@ -869,7 +528,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Resize(RealStatePtr L)
+        static int _m_Reinitialize(RealStatePtr L)
         {
 		    try {
             
@@ -886,7 +545,7 @@ namespace XLua.CSObjectWrap
                     int _width = LuaAPI.xlua_tointeger(L, 2);
                     int _height = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.Resize( _width, _height );
+                        bool gen_ret = gen_to_be_invoked.Reinitialize( _width, _height );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -900,7 +559,21 @@ namespace XLua.CSObjectWrap
                     UnityEngine.TextureFormat _format;translator.Get(L, 4, out _format);
                     bool _hasMipMap = LuaAPI.lua_toboolean(L, 5);
                     
-                        bool gen_ret = gen_to_be_invoked.Resize( _width, _height, _format, _hasMipMap );
+                        bool gen_ret = gen_to_be_invoked.Reinitialize( _width, _height, _format, _hasMipMap );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 5&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& translator.Assignable<UnityEngine.Experimental.Rendering.GraphicsFormat>(L, 4)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 5)) 
+                {
+                    int _width = LuaAPI.xlua_tointeger(L, 2);
+                    int _height = LuaAPI.xlua_tointeger(L, 3);
+                    UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
+                    bool _hasMipMap = LuaAPI.lua_toboolean(L, 5);
+                    
+                        bool gen_ret = gen_to_be_invoked.Reinitialize( _width, _height, _format, _hasMipMap );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -912,7 +585,7 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.Resize!");
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.Reinitialize!");
             
         }
         
@@ -1065,6 +738,348 @@ namespace XLua.CSObjectWrap
             
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetPixels(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1) 
+                {
+                    
+                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels(  );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                {
+                    int _miplevel = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _miplevel );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 5&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 5)) 
+                {
+                    int _x = LuaAPI.xlua_tointeger(L, 2);
+                    int _y = LuaAPI.xlua_tointeger(L, 3);
+                    int _blockWidth = LuaAPI.xlua_tointeger(L, 4);
+                    int _blockHeight = LuaAPI.xlua_tointeger(L, 5);
+                    
+                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 6&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 5)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 6)) 
+                {
+                    int _x = LuaAPI.xlua_tointeger(L, 2);
+                    int _y = LuaAPI.xlua_tointeger(L, 3);
+                    int _blockWidth = LuaAPI.xlua_tointeger(L, 4);
+                    int _blockHeight = LuaAPI.xlua_tointeger(L, 5);
+                    int _miplevel = LuaAPI.xlua_tointeger(L, 6);
+                    
+                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight, _miplevel );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.GetPixels!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Compress(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    bool _highQuality = LuaAPI.lua_toboolean(L, 2);
+                    
+                    gen_to_be_invoked.Compress( _highQuality );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ClearRequestedMipmapLevel(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.ClearRequestedMipmapLevel(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_IsRequestedMipmapLevelLoaded(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        bool gen_ret = gen_to_be_invoked.IsRequestedMipmapLevelLoaded(  );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ClearMinimumMipmapLevel(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.ClearMinimumMipmapLevel(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_UpdateExternalTexture(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    System.IntPtr _nativeTex = LuaAPI.lua_touserdata(L, 2);
+                    
+                    gen_to_be_invoked.UpdateExternalTexture( _nativeTex );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetRawTextureData(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        byte[] gen_ret = gen_to_be_invoked.GetRawTextureData(  );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetPixels32(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1) 
+                {
+                    
+                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32(  );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                {
+                    int _miplevel = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _miplevel );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.GetPixels32!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_PackTextures(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 3&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)) 
+                {
+                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
+                    int _padding = LuaAPI.xlua_tointeger(L, 3);
+                    
+                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 4&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)) 
+                {
+                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
+                    int _padding = LuaAPI.xlua_tointeger(L, 3);
+                    int _maximumAtlasSize = LuaAPI.xlua_tointeger(L, 4);
+                    
+                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding, _maximumAtlasSize );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 5&& translator.Assignable<UnityEngine.Texture2D[]>(L, 2)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 4)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 5)) 
+                {
+                    UnityEngine.Texture2D[] _textures = (UnityEngine.Texture2D[])translator.GetObject(L, 2, typeof(UnityEngine.Texture2D[]));
+                    int _padding = LuaAPI.xlua_tointeger(L, 3);
+                    int _maximumAtlasSize = LuaAPI.xlua_tointeger(L, 4);
+                    bool _makeNoLongerReadable = LuaAPI.lua_toboolean(L, 5);
+                    
+                        UnityEngine.Rect[] gen_ret = gen_to_be_invoked.PackTextures( _textures, _padding, _maximumAtlasSize, _makeNoLongerReadable );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Texture2D.PackTextures!");
+            
+        }
+        
         
         
         
@@ -1162,6 +1177,20 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushboolean(L, gen_to_be_invoked.isReadable);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_vtOnly(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Texture2D gen_to_be_invoked = (UnityEngine.Texture2D)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.vtOnly);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

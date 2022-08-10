@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
 		    Utils.BeginObjectRegister(typeof(UnityEngine.KeyCode), L, translator, 0, 0, 0, 0);
 			Utils.EndObjectRegister(typeof(UnityEngine.KeyCode), L, translator, null, null, null, null, null);
 			
-			Utils.BeginClassRegister(typeof(UnityEngine.KeyCode), L, null, 327, 0, 0);
+			Utils.BeginClassRegister(typeof(UnityEngine.KeyCode), L, null, 329, 0, 0);
 
             Utils.RegisterEnumType(L, typeof(UnityEngine.KeyCode));
 
@@ -360,7 +360,7 @@ namespace XLua.CSObjectWrap
 		    Utils.BeginObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, 0, 0, 0, 0);
 			Utils.EndObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, null, null, null, null, null);
 			
-			Utils.BeginClassRegister(typeof(UnityEngine.RuntimePlatform), L, null, 42, 0, 0);
+			Utils.BeginClassRegister(typeof(UnityEngine.RuntimePlatform), L, null, 49, 0, 0);
 
             Utils.RegisterEnumType(L, typeof(UnityEngine.RuntimePlatform));
 

@@ -21,12 +21,13 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.Events.UnityEventBase);
-			Utils.BeginObjectRegister(type, L, translator, 0, 6, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 7, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPersistentEventCount", _m_GetPersistentEventCount);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPersistentTarget", _m_GetPersistentTarget);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPersistentMethodName", _m_GetPersistentMethodName);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPersistentListenerState", _m_SetPersistentListenerState);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPersistentListenerState", _m_GetPersistentListenerState);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveAllListeners", _m_RemoveAllListeners);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ToString", _m_ToString);
 			
@@ -177,6 +178,35 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetPersistentListenerState(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Events.UnityEventBase gen_to_be_invoked = (UnityEngine.Events.UnityEventBase)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    int _index = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        UnityEngine.Events.UnityEventCallState gen_ret = gen_to_be_invoked.GetPersistentListenerState( _index );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_RemoveAllListeners(RealStatePtr L)
         {
 		    try {
@@ -240,7 +270,9 @@ namespace XLua.CSObjectWrap
             
             
             
-                
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 3&& translator.Assignable<object>(L, 1)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Type[]>(L, 3)) 
                 {
                     object _obj = translator.GetObject(L, 1, typeof(object));
                     string _functionName = LuaAPI.lua_tostring(L, 2);
@@ -253,10 +285,25 @@ namespace XLua.CSObjectWrap
                     
                     return 1;
                 }
+                if(gen_param_count == 3&& translator.Assignable<System.Type>(L, 1)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Type[]>(L, 3)) 
+                {
+                    System.Type _objectType = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
+                    string _functionName = LuaAPI.lua_tostring(L, 2);
+                    System.Type[] _argumentTypes = (System.Type[])translator.GetObject(L, 3, typeof(System.Type[]));
+                    
+                        System.Reflection.MethodInfo gen_ret = UnityEngine.Events.UnityEventBase.GetValidMethodInfo( _objectType, _functionName, _argumentTypes );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Events.UnityEventBase.GetValidMethodInfo!");
             
         }
         

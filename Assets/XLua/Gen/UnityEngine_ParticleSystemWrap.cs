@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.ParticleSystem);
-			Utils.BeginObjectRegister(type, L, translator, 0, 16, 31, 3);
+			Utils.BeginObjectRegister(type, L, translator, 0, 19, 32, 3);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetParticles", _m_SetParticles);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetParticles", _m_GetParticles);
@@ -39,6 +39,9 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsAlive", _m_IsAlive);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Emit", _m_Emit);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "TriggerSubEmitter", _m_TriggerSubEmitter);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AllocateAxisOfRotationAttribute", _m_AllocateAxisOfRotationAttribute);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AllocateMeshIndexAttribute", _m_AllocateMeshIndexAttribute);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AllocateCustomDataAttribute", _m_AllocateCustomDataAttribute);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "isPlaying", _g_get_isPlaying);
@@ -56,6 +59,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "velocityOverLifetime", _g_get_velocityOverLifetime);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "limitVelocityOverLifetime", _g_get_limitVelocityOverLifetime);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "inheritVelocity", _g_get_inheritVelocity);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "lifetimeByEmitterSpeed", _g_get_lifetimeByEmitterSpeed);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "forceOverLifetime", _g_get_forceOverLifetime);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "colorOverLifetime", _g_get_colorOverLifetime);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "colorBySpeed", _g_get_colorBySpeed);
@@ -431,7 +435,9 @@ namespace XLua.CSObjectWrap
                 UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
             
             
-                
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1) 
                 {
                     
                         UnityEngine.ParticleSystem.Trails gen_ret = gen_to_be_invoked.GetTrails(  );
@@ -441,10 +447,26 @@ namespace XLua.CSObjectWrap
                     
                     return 1;
                 }
+                if(gen_param_count == 2&& translator.Assignable<UnityEngine.ParticleSystem.Trails>(L, 2)) 
+                {
+                    UnityEngine.ParticleSystem.Trails _trailData;translator.Get(L, 2, out _trailData);
+                    
+                        int gen_ret = gen_to_be_invoked.GetTrails( ref _trailData );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    translator.Push(L, _trailData);
+                        translator.Update(L, 2, _trailData);
+                        
+                    
+                    
+                    
+                    return 2;
+                }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.ParticleSystem.GetTrails!");
             
         }
         
@@ -910,6 +932,88 @@ namespace XLua.CSObjectWrap
             
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_AllocateAxisOfRotationAttribute(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.AllocateAxisOfRotationAttribute(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_AllocateMeshIndexAttribute(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.AllocateMeshIndexAttribute(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_AllocateCustomDataAttribute(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    UnityEngine.ParticleSystemCustomData _stream;translator.Get(L, 2, out _stream);
+                    
+                    gen_to_be_invoked.AllocateCustomDataAttribute( _stream );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
         
         
         
@@ -1117,6 +1221,20 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.inheritVelocity);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_lifetimeByEmitterSpeed(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.ParticleSystem gen_to_be_invoked = (UnityEngine.ParticleSystem)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.lifetimeByEmitterSpeed);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

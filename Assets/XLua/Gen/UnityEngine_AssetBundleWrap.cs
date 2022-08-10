@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.AssetBundle);
-			Utils.BeginObjectRegister(type, L, translator, 0, 10, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 11, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Contains", _m_Contains);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAsset", _m_LoadAsset);
@@ -31,6 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAllAssets", _m_LoadAllAssets);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAllAssetsAsync", _m_LoadAllAssetsAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Unload", _m_Unload);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UnloadAsync", _m_UnloadAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAllAssetNames", _m_GetAllAssetNames);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAllScenePaths", _m_GetAllScenePaths);
 			
@@ -776,6 +777,35 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_UnloadAsync(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.AssetBundle gen_to_be_invoked = (UnityEngine.AssetBundle)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    bool _unloadAllLoadedObjects = LuaAPI.lua_toboolean(L, 2);
+                    
+                        UnityEngine.AsyncOperation gen_ret = gen_to_be_invoked.UnloadAsync( _unloadAllLoadedObjects );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

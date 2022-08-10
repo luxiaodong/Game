@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.Rendering.Universal.UniversalAdditionalCameraData);
-			Utils.BeginObjectRegister(type, L, translator, 0, 4, 17, 13);
+			Utils.BeginObjectRegister(type, L, translator, 0, 4, 20, 15);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetRenderer", _m_SetRenderer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnBeforeSerialize", _m_OnBeforeSerialize);
@@ -41,11 +41,14 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "scriptableRenderer", _g_get_scriptableRenderer);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "volumeLayerMask", _g_get_volumeLayerMask);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "volumeTrigger", _g_get_volumeTrigger);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "requiresVolumeFrameworkUpdate", _g_get_requiresVolumeFrameworkUpdate);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "volumeStack", _g_get_volumeStack);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderPostProcessing", _g_get_renderPostProcessing);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "antialiasing", _g_get_antialiasing);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "antialiasingQuality", _g_get_antialiasingQuality);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "stopNaN", _g_get_stopNaN);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "dithering", _g_get_dithering);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "allowXRRendering", _g_get_allowXRRendering);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderShadows", _s_set_renderShadows);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "requiresDepthOption", _s_set_requiresDepthOption);
@@ -55,11 +58,13 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "requiresColorTexture", _s_set_requiresColorTexture);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "volumeLayerMask", _s_set_volumeLayerMask);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "volumeTrigger", _s_set_volumeTrigger);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "volumeStack", _s_set_volumeStack);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderPostProcessing", _s_set_renderPostProcessing);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "antialiasing", _s_set_antialiasing);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "antialiasingQuality", _s_set_antialiasingQuality);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "stopNaN", _s_set_stopNaN);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "dithering", _s_set_dithering);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "allowXRRendering", _s_set_allowXRRendering);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -386,6 +391,34 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_requiresVolumeFrameworkUpdate(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.requiresVolumeFrameworkUpdate);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_volumeStack(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.volumeStack);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_renderPostProcessing(RealStatePtr L)
         {
 		    try {
@@ -449,6 +482,20 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushboolean(L, gen_to_be_invoked.dithering);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_allowXRRendering(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.allowXRRendering);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -582,6 +629,21 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_volumeStack(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.volumeStack = (UnityEngine.Rendering.VolumeStack)translator.GetObject(L, 2, typeof(UnityEngine.Rendering.VolumeStack));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_renderPostProcessing(RealStatePtr L)
         {
 		    try {
@@ -651,6 +713,21 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.dithering = LuaAPI.lua_toboolean(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_allowXRRendering(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Rendering.Universal.UniversalAdditionalCameraData gen_to_be_invoked = (UnityEngine.Rendering.Universal.UniversalAdditionalCameraData)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.allowXRRendering = LuaAPI.lua_toboolean(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

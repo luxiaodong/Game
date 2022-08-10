@@ -32,9 +32,9 @@ namespace XLua.CSObjectWrap
 			    null, null, null);
 
 		    Utils.BeginClassRegister(type, L, __CreateInstance, 4, 7, 1);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "InitState", _m_InitState_xlua_st_);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "ColorHSV", _m_ColorHSV_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "InitState", _m_InitState_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Range", _m_Range_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "ColorHSV", _m_ColorHSV_xlua_st_);
             
 			
             
@@ -55,24 +55,7 @@ namespace XLua.CSObjectWrap
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int __CreateInstance(RealStatePtr L)
         {
-            
-			try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 1)
-				{
-					
-					UnityEngine.Random gen_ret = new UnityEngine.Random();
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
-				
-			}
-			catch(System.Exception gen_e) {
-				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-			}
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Random constructor!");
-            
+            return LuaAPI.luaL_error(L, "UnityEngine.Random does not have a constructor!");
         }
         
 		
@@ -81,72 +64,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_InitState_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    int _seed = LuaAPI.xlua_tointeger(L, 1);
-                    
-                    UnityEngine.Random.InitState( _seed );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Range_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
-                {
-                    float _min = (float)LuaAPI.lua_tonumber(L, 1);
-                    float _max = (float)LuaAPI.lua_tonumber(L, 2);
-                    
-                        float gen_ret = UnityEngine.Random.Range( _min, _max );
-                        LuaAPI.lua_pushnumber(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
-                {
-                    int _min = LuaAPI.xlua_tointeger(L, 1);
-                    int _max = LuaAPI.xlua_tointeger(L, 2);
-                    
-                        int gen_ret = UnityEngine.Random.Range( _min, _max );
-                        LuaAPI.xlua_pushinteger(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Random.Range!");
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_ColorHSV_xlua_st_(RealStatePtr L)
@@ -235,6 +152,72 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Random.ColorHSV!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_InitState_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    int _seed = LuaAPI.xlua_tointeger(L, 1);
+                    
+                    UnityEngine.Random.InitState( _seed );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Range_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                {
+                    float _minInclusive = (float)LuaAPI.lua_tonumber(L, 1);
+                    float _maxInclusive = (float)LuaAPI.lua_tonumber(L, 2);
+                    
+                        float gen_ret = UnityEngine.Random.Range( _minInclusive, _maxInclusive );
+                        LuaAPI.lua_pushnumber(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 1)&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                {
+                    int _minInclusive = LuaAPI.xlua_tointeger(L, 1);
+                    int _maxExclusive = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        int gen_ret = UnityEngine.Random.Range( _minInclusive, _maxExclusive );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to UnityEngine.Random.Range!");
             
         }
         

@@ -21,13 +21,15 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.MeshRenderer);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 1, 1);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 2, 2);
 			
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "additionalVertexStreams", _g_get_additionalVertexStreams);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "enlightenVertexStream", _g_get_enlightenVertexStream);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "additionalVertexStreams", _s_set_additionalVertexStreams);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "enlightenVertexStream", _s_set_enlightenVertexStream);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -90,6 +92,20 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_enlightenVertexStream(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.MeshRenderer gen_to_be_invoked = (UnityEngine.MeshRenderer)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.enlightenVertexStream);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -100,6 +116,21 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.MeshRenderer gen_to_be_invoked = (UnityEngine.MeshRenderer)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.additionalVertexStreams = (UnityEngine.Mesh)translator.GetObject(L, 2, typeof(UnityEngine.Mesh));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_enlightenVertexStream(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.MeshRenderer gen_to_be_invoked = (UnityEngine.MeshRenderer)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.enlightenVertexStream = (UnityEngine.Mesh)translator.GetObject(L, 2, typeof(UnityEngine.Mesh));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

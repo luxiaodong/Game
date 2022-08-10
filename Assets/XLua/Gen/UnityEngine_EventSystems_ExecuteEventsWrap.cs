@@ -31,11 +31,12 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 17, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 18, 0);
 			
 			
             
-			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerEnterHandler", _g_get_pointerEnterHandler);
+			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerMoveHandler", _g_get_pointerMoveHandler);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerEnterHandler", _g_get_pointerEnterHandler);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerExitHandler", _g_get_pointerExitHandler);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerDownHandler", _g_get_pointerDownHandler);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "pointerUpHandler", _g_get_pointerUpHandler);
@@ -73,6 +74,18 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_pointerMoveHandler(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, UnityEngine.EventSystems.ExecuteEvents.pointerMoveHandler);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_pointerEnterHandler(RealStatePtr L)

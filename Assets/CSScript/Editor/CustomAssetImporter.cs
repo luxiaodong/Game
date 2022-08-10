@@ -100,7 +100,7 @@ public class  CustomAssetImporter : AssetPostprocessor
 	{
 		TextureImporter textureImporter  = assetImporter as TextureImporter;
         bool haveAlpha = textureImporter.DoesSourceTextureHaveAlpha();
-        TextureImporterFormat iosFormat = haveAlpha ? TextureImporterFormat.ASTC_RGBA_6x6 : TextureImporterFormat.ASTC_RGB_6x6;
+        TextureImporterFormat iosFormat = haveAlpha ? TextureImporterFormat.ASTC_6x6 : TextureImporterFormat.ASTC_6x6;
         TextureImporterFormat andFormat = haveAlpha ? TextureImporterFormat.ETC2_RGBA8 : TextureImporterFormat.ETC_RGB4;
         TextureImporterFormat macFormat = haveAlpha ? TextureImporterFormat.RGBA32 : TextureImporterFormat.RGB24;
 
