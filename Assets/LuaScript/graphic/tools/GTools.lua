@@ -140,8 +140,4 @@ function GTools:captureScreenshot(fileName)
     ScreenCapture.CaptureScreenshot(filePath);
 end
 
-function GTools:captureScreenshotAsTexture()
-    return ScreenCapture.CaptureScreenshotAsTexture()
-end
-
 return GTools

@@ -39,10 +39,13 @@ end
 function TestScreenshotLayer:clickTexture()
     local luaCo = coroutine.create(function() 
         -- 帧结束时才获得材质
-        yield_return(CS.UnityEngine.WaitForEndOfFrame)
-        local tex = g_tools:captureScreenshotAsTexture()
+        yield_return(CS.UnityEngine.WaitForEndOfFrame())
+        -- local tex = g_tools:captureScreenshotAsTexture()
+        local tex2d = Texture2D(Screen.width, Screen.height)
+        tex2d:ReadPixels(Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        tex2d:Apply()
         local imageGo = self._ui.root.transform:Find("RawImage").gameObject
-        imageGo:GetComponent(typeof(UI.RawImage)).texture = tex
+        imageGo:GetComponent(typeof(UI.RawImage)).texture = tex2d
     end)
 
     coroutine.resume(luaCo)
@@ -51,8 +54,10 @@ end
 function TestScreenshotLayer:clickSave()
     local luaCo = coroutine.create(function()
         -- 帧结束时才获得材质
-        yield_return(CS.UnityEngine.WaitForEndOfFrame)
-        local tex2d = g_tools:captureScreenshotAsTexture()
+        yield_return(CS.UnityEngine.WaitForEndOfFrame())
+        -- local tex2d = g_tools:captureScreenshotAsTexture() 
+        local tex2d = Texture2D(Screen.width, Screen.height)
+        tex2d:ReadPixels(Rect(0, 0, Screen.width, Screen.height), 0, 0);
         tex2d:Apply()
         local bytes = tex2d:EncodeToPNG()
         local fileName = "abc.png"
