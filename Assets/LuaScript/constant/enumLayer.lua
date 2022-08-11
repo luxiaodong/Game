@@ -73,8 +73,9 @@ enum.ui.layer.testSpritePacker = "SpritePacker"
 enum.ui.layer.testNativeBridge = "NativeBridge"
 enum.ui.layer.testBackgroundDownload = "BackgroundDownload"
 enum.ui.layer.testSdk = "Sdk"
-enum.ui.layer.testFastScrollLayer = "Fast Scroll"
+enum.ui.layer.testFastScroll = "Fast Scroll"
 enum.ui.layer.testAudio = "Audio"
+enum.ui.layer.testScreenshot = "ScreenShot"
 
 enum.ui.view = {}
 enum.ui.view.test = "Test"

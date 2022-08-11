@@ -49,7 +49,17 @@ namespace Game
 			Debug.LogError("asset not exist. ===> " + fileName + "\n" + stack);
 			string[] array = fileName.Split('.');
 			return LoadDefalutAssetBySuffix( array[array.Length - 1] );
-		}		
+		}
+
+		public UnityEngine.Object LoadDefalutAssetBySuffix(string suffix)
+		{
+			if(suffix == "tga" || suffix == "png")
+			{
+				return Texture2D.whiteTexture;
+			}
+
+			return null;
+		}	
 #endif
 	}
 }

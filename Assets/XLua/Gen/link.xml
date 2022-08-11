@@ -6,6 +6,7 @@
 	    <type fullname="UnityEngineObjectExtention" preserve="all"/>
 		<type fullname="UnityEngineObjectExtention" preserve="all"/>
 		<type fullname="Game.CAnimationEvent" preserve="all"/>
+		<type fullname="Game.CCoroutine" preserve="all"/>
 		<type fullname="Game.CCustomUI" preserve="all"/>
 		<type fullname="Game.CDestroy" preserve="all"/>
 		<type fullname="Game.CNonRenderImage" preserve="all"/>
@@ -126,6 +127,7 @@
 		<type fullname="UnityEngine.UI.Image" preserve="all"/>
 		<type fullname="UnityEngine.UI.InputField" preserve="all"/>
 		<type fullname="UnityEngine.UI.InputField+OnChangeEvent" preserve="all"/>
+		<type fullname="UnityEngine.UI.RawImage" preserve="all"/>
 		<type fullname="UnityEngine.UI.ScrollRect" preserve="all"/>
 		<type fullname="UnityEngine.UI.ScrollRect+ScrollRectEvent" preserve="all"/>
 		<type fullname="UnityEngine.UI.Text" preserve="all"/>
@@ -135,6 +137,11 @@
 
 	<assembly fullname="UnityEngine.InputLegacyModule">
 	    <type fullname="UnityEngine.Input" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.ImageConversionModule">
+	    <type fullname="UnityEngine.ImageConversion" preserve="all"/>
 		
 	</assembly>
 
@@ -151,6 +158,11 @@
 	<assembly fullname="Unity.RenderPipelines.Universal.Runtime">
 	    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all"/>
 		<type fullname="UnityEngine.Rendering.Universal.CameraRenderType" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.ScreenCaptureModule">
+	    <type fullname="UnityEngine.ScreenCapture" preserve="all"/>
 		
 	</assembly>
 

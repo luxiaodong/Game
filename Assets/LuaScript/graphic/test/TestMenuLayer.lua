@@ -2,7 +2,9 @@ local GLayer = require("graphic.core.GLayer")
 local TestMenuLayer = class("TestMenuLayer", GLayer)
 
 local config = {}
-table.insert(config, {name=enum.ui.layer.testFastScrollLayer, class="graphic.test.TestFastScroll.TestFastScrollLayer"})
+
+table.insert(config, {name=enum.ui.layer.testScreenshot, class="graphic.test.TestScreenshot.TestScreenshotLayer"})
+table.insert(config, {name=enum.ui.layer.testFastScroll, class="graphic.test.TestFastScroll.TestFastScrollLayer"})
 table.insert(config, {name=enum.ui.layer.testBackgroundDownload, class="graphic.test.TestBackgroundDownload.TestBackgroundDownloadLayer"})
 table.insert(config, {name=enum.ui.layer.testNativeBridge, class="graphic.test.TestNativeBridge.TestNativeBridgeLayer"})
 table.insert(config, {name=enum.ui.layer.testCombineMeshes, class="graphic.test.TestAvatar.TestCombineMeshesLayer"})

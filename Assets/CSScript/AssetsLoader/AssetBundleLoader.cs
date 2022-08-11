@@ -44,15 +44,5 @@ namespace Game
 		{
 			ab.Unload(isIncludeAsset);
 		}
-
-		public UnityEngine.Object LoadDefalutAssetBySuffix(string suffix)
-		{
-			if(suffix == "tga" || suffix == "png")
-			{
-				return Texture2D.whiteTexture;
-			}
-
-			return null;
-		}
 	}
 }

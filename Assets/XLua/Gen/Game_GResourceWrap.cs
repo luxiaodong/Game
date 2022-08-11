@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Game.GResource);
-			Utils.BeginObjectRegister(type, L, translator, 0, 13, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 15, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsAbMode", _m_IsAbMode);
@@ -33,6 +33,8 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAssetBundleAsync", _m_LoadAssetBundleAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UnloadAssetBundle", _m_UnloadAssetBundle);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UnloadUnusedAssets", _m_UnloadUnusedAssets);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadNativeImage", _m_LoadNativeImage);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SaveNativeImage", _m_SaveNativeImage);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadBuiltinResource", _m_LoadBuiltinResource);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadBuiltinFont", _m_LoadBuiltinFont);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadBuiltinMaterial", _m_LoadBuiltinMaterial);
@@ -388,6 +390,65 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LoadNativeImage(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Game.GResource gen_to_be_invoked = (Game.GResource)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _filePath = LuaAPI.lua_tostring(L, 2);
+                    
+                        UnityEngine.Texture2D gen_ret = gen_to_be_invoked.LoadNativeImage( _filePath );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SaveNativeImage(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Game.GResource gen_to_be_invoked = (Game.GResource)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _filePath = LuaAPI.lua_tostring(L, 2);
+                    UnityEngine.Texture2D _tex2d = (UnityEngine.Texture2D)translator.GetObject(L, 3, typeof(UnityEngine.Texture2D));
+                    
+                        bool gen_ret = gen_to_be_invoked.SaveNativeImage( _filePath, _tex2d );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

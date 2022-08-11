@@ -19,7 +19,7 @@ enum.unity.behaviour.onFixedUpdate = "OnFixedUpdate"
 
 enum.unity.scene = {}
 enum.unity.scene.ui = "SetupScene"
-enum.unity.scene.test = "WorldScene"
+enum.unity.scene.test = "TestScene"
 enum.unity.scene.battle = "BattleScene"
 enum.unity.scene.world = "TestScene"
 

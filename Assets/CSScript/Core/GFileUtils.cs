@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.IO;
 using UnityEngine;
 using System.Security.Cryptography;
@@ -198,6 +199,15 @@ namespace Game
 			return Application.temporaryCachePath;
 		}
 
+		public string GetScreenshotPath()
+		{
+#if	UNITY_IOS || UNITY_ANDROID
+			return "";
+#else
+			return Application.persistentDataPath;
+#endif
+		}
+
 		public byte[] ReadAllBytes(string fullPath)
 		{
 #if UNITY_ANDROID
@@ -279,6 +289,26 @@ namespace Game
 		{
 			File.Copy(srcPath, dstPath, true);
 			return true;
+		}
+
+		public bool CreateFile(string fullPath, byte[] data)
+		{
+			try
+			{
+				using(FileStream fs = File.Create(fullPath))
+				{
+					// data = new UTF8Encoding(true).GetBytes("This is some text in the file.");
+					if(fs == null) Debug.LogError("fs is null");
+					if(data == null) Debug.LogError("data is null");
+					fs.Write(data, 0, data.Length);
+				}
+			}
+			catch(Exception e)
+			{
+				Debug.LogError(e.ToString());
+			}
+            
+            return true;
 		}
 
 		public bool RemoveFile(string fullPath)

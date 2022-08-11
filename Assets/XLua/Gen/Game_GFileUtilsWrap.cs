@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Game.GFileUtils);
-			Utils.BeginObjectRegister(type, L, translator, 0, 20, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 22, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LuaCode", _m_LuaCode);
@@ -33,6 +33,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FindAssetBundlePath", _m_FindAssetBundlePath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetWritablePath", _m_GetWritablePath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetTempCachePath", _m_GetTempCachePath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetScreenshotPath", _m_GetScreenshotPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ReadAllBytes", _m_ReadAllBytes);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsFileExist", _m_IsFileExist);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsDirExist", _m_IsDirExist);
@@ -40,6 +41,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveDir", _m_RemoveDir);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CopyDir", _m_CopyDir);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CopyFile", _m_CopyFile);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreateFile", _m_CreateFile);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveFile", _m_RemoveFile);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Md5String", _m_Md5String);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Md5File", _m_Md5File);
@@ -404,6 +406,34 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetScreenshotPath(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Game.GFileUtils gen_to_be_invoked = (Game.GFileUtils)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        string gen_ret = gen_to_be_invoked.GetScreenshotPath(  );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_ReadAllBytes(RealStatePtr L)
         {
 		    try {
@@ -595,6 +625,36 @@ namespace XLua.CSObjectWrap
                     string _dstPath = LuaAPI.lua_tostring(L, 3);
                     
                         bool gen_ret = gen_to_be_invoked.CopyFile( _srcPath, _dstPath );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_CreateFile(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Game.GFileUtils gen_to_be_invoked = (Game.GFileUtils)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _fullPath = LuaAPI.lua_tostring(L, 2);
+                    byte[] _data = LuaAPI.lua_tobytes(L, 3);
+                    
+                        bool gen_ret = gen_to_be_invoked.CreateFile( _fullPath, _data );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

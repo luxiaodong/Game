@@ -135,4 +135,13 @@ function GTools:deepCopy(t)
     return _copy(t)
 end
 
+function GTools:captureScreenshot(fileName)
+    local filePath = CS.Game.GFileUtils.GetInstance():GetScreenshotPath().."/"..fileName;
+    ScreenCapture.CaptureScreenshot(filePath);
+end
+
+function GTools:captureScreenshotAsTexture()
+    return ScreenCapture.CaptureScreenshotAsTexture()
+end
+
 return GTools

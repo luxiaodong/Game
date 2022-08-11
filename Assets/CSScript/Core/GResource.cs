@@ -82,6 +82,29 @@ namespace Game
 			Resources.UnloadUnusedAssets();
 		}
 
+		//使用流读取图片,返回Texture2D
+		public Texture2D LoadNativeImage(string filePath)
+		{
+			Texture2D tex = null;
+
+			if(GFileUtils.GetInstance().IsFileExistInEditor(filePath))
+			{
+				byte[] data = GFileUtils.GetInstance().ReadAllBytes(filePath);
+				tex = new Texture2D(2, 2);
+				tex.LoadImage(data);
+			}
+
+			return tex;
+		}
+
+		public bool SaveNativeImage(string filePath, Texture2D tex2d)
+		{
+			tex2d.Apply();
+			byte[] bytes = tex2d.EncodeToPNG();
+			GFileUtils.GetInstance().CreateFile(filePath, bytes);
+			return true;
+		}
+
 		// ==========系统内嵌资源=============
 		public UnityEngine.Object LoadBuiltinResource(string fileName)
 		{

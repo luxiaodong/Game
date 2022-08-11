@@ -30,6 +30,7 @@ function GApplication:init()
     g_system._version.game = PlayerPrefs.GetString("game_luaVersion")
 
     tween.init()
+    self:coroutineInit()
 
 	-- 随机数
 	-- math.randomseed( os.time() ) -- tonumber(os.time()):reverse():sub(1,6)
@@ -47,6 +48,21 @@ function GApplication:init()
  	local stage = require("graphic.core.GStage").create()
 	g_system._stage = stage --将stage挂载倒system
 	g_tools:delayOneFrame(function() stage:init() end)
+end
+
+function GApplication:coroutineInit()
+	local go = GameObject.Find("GameObject")
+	local coroutineComponent = go:GetComponent(typeof(CS.Game.CCoroutine))
+	if coroutineComponent == nil then
+		coroutineComponent = go:AddComponent(typeof(CS.Game.CCoroutine))
+	end
+ 
+	local function async_yield_return(to_yield, cb)
+	    coroutineComponent:YieldAndCallback(to_yield, cb)
+	end
+	
+	local util = require 'xlua.util' 
+	yield_return = util.async_to_sync(async_yield_return)
 end
 
 return GApplication

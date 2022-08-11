@@ -21,6 +21,7 @@ public static class LuaExportConfig
 
         //Game
         typeof(CAnimationEvent),
+        typeof(CCoroutine),
         typeof(CCustomUI),
         typeof(CDestroy),
         typeof(CNonRenderImage),
@@ -73,6 +74,7 @@ public static class LuaExportConfig
         typeof(UnityEngine.GameObject),
         typeof(UnityEngine.Graphics),
         typeof(UnityEngine.Input),
+        typeof(UnityEngine.ImageConversion),
         typeof(UnityEngine.KeyCode),
         typeof(UnityEngine.Material),
         typeof(UnityEngine.MaterialPropertyBlock),
@@ -101,6 +103,7 @@ public static class LuaExportConfig
         typeof(UnityEngine.SceneManagement.SceneManager),
         typeof(UnityEngine.SceneManagement.LoadSceneMode),
         typeof(UnityEngine.Screen),
+        typeof(UnityEngine.ScreenCapture),
         typeof(UnityEngine.Shader),
         typeof(UnityEngine.SkinnedMeshRenderer),
         typeof(UnityEngine.Sprite),
@@ -125,6 +128,7 @@ public static class LuaExportConfig
         typeof(UnityEngine.UI.Image),
         typeof(UnityEngine.UI.InputField),
         typeof(UnityEngine.UI.InputField.OnChangeEvent),
+        typeof(UnityEngine.UI.RawImage),
         typeof(UnityEngine.UI.ScrollRect),
         typeof(UnityEngine.UI.ScrollRect.ScrollRectEvent),
         typeof(UnityEngine.UI.Text),
